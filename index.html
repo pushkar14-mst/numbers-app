@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Numbers App</title>
+</head>
+
+<body>
+    <h1>Arithmetic</h1>
+    <input type="text" class="num1"/>
+    <span>+</span>
+    <input type="text" class="num2"/>
+    <button type="submit" class="submitBtn">=</button>
+    <input type="text" class="result"/>
+</body>
+<script>
+    let num1 = document.querySelector('.num1');
+    let num2 = document.querySelector('.num2');
+    let result = document.querySelector('.result');
+    let submitBtn = document.querySelector('.submitBtn');
+    submitBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        console.log(num1);
+        console.log(num2);
+        let n1 = parseInt(num1.value);
+        let n2 = parseInt(num2.value);
+        result.value = n1 + n2;
+    });
+</script>
+</html>
