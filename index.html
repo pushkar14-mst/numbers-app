@@ -19,13 +19,18 @@
     let num2 = document.querySelector('.num2');
     let result = document.querySelector('.result');
     let submitBtn = document.querySelector('.submitBtn');
-    submitBtn.addEventListener('click', function (e) {
+    
+    submitBtn.addEventListener('click', async function (e) {
         e.preventDefault();
-        console.log(num1);
-        console.log(num2);
-        let n1 = parseInt(num1.value);
-        let n2 = parseInt(num2.value);
-        result.value = n1 + n2;
+        // console.log(num1);
+        // console.log(num2);
+        // let n1 = parseInt(num1.value);
+        // let n2 = parseInt(num2.value);
+        // result.value = n1 + n2;
+        const response = await fetch(`http://localhost:3000/add/${num1.value}/${num2.value}`);
+        const data = await response.json();
+        console.log(data);
+        result.value = data?.sum;
     });
 </script>
 </html>
