@@ -27,7 +27,7 @@
         // let n1 = parseInt(num1.value);
         // let n2 = parseInt(num2.value);
         // result.value = n1 + n2;
-        const response = await fetch(`​https://arithmetic-service-jtzo.onrender.com/add/${num1.value}/${num2.value}`);
+        const response = await fetch("https://arithmetic-service-jtzo.onrender.com/add/"+num1.value+"/"+num2.value);
         const data = await response.json();
         console.log(data);
         result.value = data?.sum;
