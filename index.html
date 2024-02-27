@@ -4,15 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Numbers App</title>
+    <style>
+        .column {
+            float: left;
+            width: 50%;
+            padding: 10px;
+            box-sizing: border-box;
+    
+        }
+    
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+    </style>
 </head>
 
 <body>
     <h1>Arithmetic</h1>
-    <input type="text" class="num1"/>
-    <span>+</span>
-    <input type="text" class="num2"/>
-    <button type="submit" class="submitBtn">=</button>
-    <input type="text" class="result"/>
+    <div class="row">
+        <div class="column">
+            <h2>Addition</h2>
+            <input type="text" class="num1" placeholder="Number 1"/>
+            <span>+</span>
+            <input type="text" class="num2" placeholder="Number 2"/>
+            <button type="submit" class="submitBtn">=</button>
+            <input type="text" class="result" />
+        </div>
+        <div class="column">
+            <h2>Prime check</h2>
+            <label>Number to test:</label>
+            <input id="primeNumber" />
+            <button onclick="isPrime()">Check</button>
+            <label id="primeCheckResult"></label>
+        </div>
+    </div>
+    
 </body>
 <script>
     let num1 = document.querySelector('.num1');
@@ -32,5 +60,13 @@
         console.log(data);
         result.value = data?.sum;
     });
+    async function isPrime() {
+            const numberToTest = document.getElementById("primeNumber");
+            let n = numberToTest.value;
+            const response = await fetch("https://prime-service-latest-q3jk.onrender.com/prime/" + n);
+            // console.log(response);
+            // const result = await response.json();
+            document.getElementById("primeCheckResult").innerText = response;
+        }
 </script>
 </html>
