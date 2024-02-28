@@ -40,7 +40,12 @@
             <label id="primeCheckResult"></label>
         </div>
     </div>
-    
+    <div class="column">
+        <h3>Caesar's Cipher</h3>
+        <label>Enter the text to encrypt:</label>
+        <input id="textToEncrypt" />
+        <button onclick="encrypt()">Encrypt</button>
+    </div>
 </body>
 <script>
     let num1 = document.querySelector('.num1');
@@ -68,5 +73,10 @@
             // const result = await response.json();
             document.getElementById("primeCheckResult").innerText = response;
         }
+    async function encrypt() {
+        const textToEncrypt = document.getElementById("textToEncrypt");
+        const response = await fetch("http://127.0.0.1:8000/ciphers/caesar/" + textToEncrypt.value+"/3");
+        console.log(response);
+    }
 </script>
 </html>
