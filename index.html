@@ -47,9 +47,9 @@
         <section>
             <h2>Ceasar cipher</h2>
             <label>Text:</label>
-            <input name="textToEncrypt" />
-            <button onclick="isPrime()">Cipher</button>
-            <label className="cipherResult"></label>
+            <input class="textToEncrypt" />
+            <button onclick="encrypt()">Cipher</button>
+            <label class="cipherResult"></label>
         </section>
     </div>
     </div>
@@ -71,9 +71,11 @@
             document.querySelector(".primeCheckResult").innerText = result;
         }
     async function encrypt() {
-        const textToEncrypt = document.getElementById("textToEncrypt");
-        const response = await fetch("http://127.0.0.1:8000/ciphers/caesar/" + textToEncrypt.value+"/3");
-        console.log(response);
+        const textToEncrypt = document.querySelector(".textToEncrypt");
+        const response = await fetch("https://ciphers-service-latest-icuh.onrender.com/ciphers/caesar/" + textToEncrypt.value+"/3");
+        const result = await response.json();
+        log(result);
+        document.querySelector(".cipherResult").innerText = result.cipher;
     }
 </script>
 </html>
