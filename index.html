@@ -74,7 +74,7 @@
         const textToEncrypt = document.querySelector(".textToEncrypt");
         const response = await fetch("https://ciphers-service-latest-icuh.onrender.com/ciphers/caesar/" + textToEncrypt.value+"/3");
         const result = await response.json();
-        log(result);
+        console.log(result);
         document.querySelector(".cipherResult").innerText = result.cipher;
     }
 </script>
